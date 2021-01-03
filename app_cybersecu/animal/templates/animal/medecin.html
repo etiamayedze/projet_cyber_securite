@@ -1,0 +1,33 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    <form action="
+            {% if update == True %}{% url 'updatemedecin' medecin_occurence.id %}{% else %}{% url 'addmedecin' %}{% endif %}"
+          method="post" autocomplete="off" id="idmedecin">
+        {% csrf_token %}
+        <legend>ENREGISTRER UN MEDECIN</legend>
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">NOM DU MEDECIN</label>
+            <input type="text" class="form-control" name="nom_medecin" placeholder="Nom medecin"
+                   id="nom_medecin" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">PRENOM DU MEDECIN</label>
+            <input type="text" class="form-control" name="prenom_medecin" placeholder="Prénom medecin"
+                   id="prenom_medecin" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">CONTACT</label>
+            <input type="text" class="form-control" name="contact_medecin" placeholder="Contact médecin"
+                   id="contact_medecin" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+
+    </form>
+
+{% endblock %}

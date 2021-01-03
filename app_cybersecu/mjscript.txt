@@ -1,0 +1,23 @@
+addanimal[animal/addanimal] --> tableanimal[AnimalTable]
+updateanimal[animal/updateanimal]  --> tableanimal[AnimalTable]
+searchanimal[animal/animal]  --> tableanimal[AnimalTable]
+
+addparent[animal/addparent] --> tableparent[ParentTable]
+updateparent[animal/updateparent]  --> tableparent[ParentTable]
+searchparent[animal/parent]  --> tableparent[ParentTable]
+
+addmedecin[animal/addmedecin] --> tableMedecin[MedecinTable]
+updatemedecin[animal/updatemedecin]  --> tableMedecin[MedecinTable]
+searchmedecin[animal/medecin]  --> tableMedecin[MedecinTable]
+
+addrdv[animal/addrdv] --> tableRendezVous[RdvTable]
+updaterdv[animal/updaterdv]  --> tableRendezVous[RdvTable]
+searchrdv[animal/rdv]  --> tableRendezVous[RdvTable]
+
+tableanimal[AnimalTable] --> basededonnees[Modèle/BD]
+tableparent[ParentTable] --> basededonnees[Modèle/BD]
+tableMedecin[MedecinTable] --> basededonnees[Modèle/BD]
+tableRendezVous[RdvTable] --> basededonnees[Modèle/BD]
+
+basededonnees[Modèle] --> docker[Docker]
+serveurHTTP[Serveur] --> docker[Docker]

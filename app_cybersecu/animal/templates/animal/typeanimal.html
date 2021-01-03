@@ -1,0 +1,21 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    <form action="
+            {% if update == True %}{% url 'updatetypeanimal' typeanimal_occurence.id %}{% else %}{% url 'addtypeanimal' %}{% endif %}"
+          method="post" autocomplete="off" id="idtypeanimal">
+        {% csrf_token %}
+        <legend>ENREGISTRER UN TYPE ANIMAL</legend>
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">TYPE ANIMAL</label>
+            <input type="text" class="form-control" name="libelle_type_animal" placeholder="Type animal"
+                   id="libelle_type_animal" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+
+    </form>
+
+{% endblock %}

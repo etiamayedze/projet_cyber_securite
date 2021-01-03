@@ -1,0 +1,50 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    <form action="
+            {% if update == True %}{% url 'updaterendezvous' rendezvous_occurence.id %}{% else %}{% url 'addrendezvous' %}{% endif %}"
+          method="post" autocomplete="off" id="idrendezvous">
+        {% csrf_token %}
+        <legend>ENREGISTRER UN PATIENT</legend>
+
+        <div class="col-md-6">
+            <label class="col-form-label" for="inputDefault">SELECTIONNER PATIENT</label>
+
+            <select class="custom-select" name="animal_rdv">
+                {% for animal in animaux %}
+                    <option value="{{ animal.id }}">{{ animal.nom_animal }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label class="col-form-label" for="inputDefault">SELECTIONNER MEDECIN</label>
+
+            <select class="custom-select" name="medecin_rdv">
+                {% for medecin in medecins %}
+                    <option value="{{ medecin.id }}">
+                        {{ medecin.prenom_medecin }}{{ ' ' }}{{ medecin.nom_medecin }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">DATE DE RDV</label>
+            <input type="date" class="form-control" name="date_rendezvous" placeholder="Date de rdv"
+                   id="date_rendezvous" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">HEURE DE RDV</label>
+            <input type="time" class="form-control" name="heure_rendezvous" placeholder="Heure de rdv"
+                   id="heure_rendezvous" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+
+    </form>
+
+{% endblock %}

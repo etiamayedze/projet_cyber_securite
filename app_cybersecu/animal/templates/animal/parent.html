@@ -1,0 +1,45 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    <form action="
+            {% if update == True %}{% url 'updateparent' parent_occurence.id %}{% else %}{% url 'addparent' %}{% endif %}"
+          method="post" autocomplete="off" id="idparent">
+        {% csrf_token %}
+        <legend>ENREGISTRER UN PARENT</legend>
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">NOM DU PARENT</label>
+            <input type="text" class="form-control" name="nom_parent" placeholder="Nom du parent"
+                   id="nom_parent" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">PRENOM DU PARENT</label>
+            <input type="text" class="form-control" name="prenom_parent" placeholder="Prénom du parent"
+                   id="prenom_parent" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">TELEPHONE DU PARENT</label>
+            <input type="text" class="form-control" name="tel_parent" placeholder="Numéro de téléphone"
+                   id="tel_parent" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">EMAIL DU PARENT</label>
+            <input type="email" class="form-control" name="email_parent" placeholder="E-mail"
+                   id="email_parent" required>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">ADRESSE</label>
+            <input type="text" class="form-control" name="adresse_parent" placeholder="Adresse"
+                   id="adresse_parent" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+
+    </form>
+
+{% endblock %}

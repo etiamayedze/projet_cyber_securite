@@ -1,0 +1,59 @@
+{% extends 'dashboard.html' %}
+
+
+{% block content %}
+    <form action="
+            {% if update == True %}{% url 'updateanimal' animal_occurence.id %}{% else %}{% url 'addanimal' %}{% endif %}"
+          method="post" autocomplete="off" id="idanimal">
+        {% csrf_token %}
+        <legend>ENREGISTRER UN PATIENT</legend>
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="inputDefault">NOM DU PATIENT</label>
+            <input type="text" class="form-control" name="nom_animal" placeholder="Nom du patient"
+                   id="nom_animal" required>
+        </div>
+
+        <div class="col-md-8">
+            <div>
+                <label class="col-form-label" for="inputDefault">PARENT DU PATIENT</label>
+            </div>
+
+            <div>
+                <select class="custom-select col-md-6" name="parent_animal">
+                    {% for parent in parents %}
+                        <option value="{{ parent.id }}">
+                            {{ parent.prenom_parent }}{{ ' ' }}{{ parent.nom_parent }}</option>
+                    {% endfor %}
+                </select>
+                <a href="{% url 'addparent' %}">
+                    <button type="button" class="btn btn-primary">Nouveau</button>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <label class="col-form-label" for="inputDefault">SEXE</label>
+            <select class="custom-select" name="sexe_animal">
+                <option selected="">Sexe</option>
+                <option value="M">Masculin</option>
+                <option value="M">Féminin</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label class="col-form-label" for="inputDefault">TYPE</label>
+            <select class="custom-select" name="type_animal">
+                {% for typeanimal in typeanimaux %}
+                    <option value="{{ typeanimal.id }}">{{ typeanimal.libelle_type_animal }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+
+    </form>
+
+{% endblock %}

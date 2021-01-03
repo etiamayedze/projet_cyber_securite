@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PET Health</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min_sandstone.css' %}">
+    <link rel="stylesheet" href="{% static 'datatable/css/dataTables.bootstrap4.css' %}">
+
+</head>
+<body>
+
+<!--modal-->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{% block modal_title %}{% endblock %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% block modal_content %}
+
+                    <!--contenu du modal-->
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--/modal-->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light p-1"> {# fixed-top #}
+    <a class="navbar-brand" href="#">PET Health</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listanimal' %}" style="color: #0c0c0c">ANIMAL-PATIENT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listparent' %}" style="color: #0c0c0c">PARENT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listmedecin' %}" style="color: #0c0c0c">MEDECIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listrendezvous' %}" style="color: #0c0c0c">RENDEZ-VOUS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listtypeanimal' %}" style="color: #0c0c0c">TYPE ANIMAL</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--content-->
+<div class="main-container" style="margin-top: 45px">
+    {% block content %}
+
+        <!--contenu du body-->
+
+    {% endblock %}
+</div>
+<!-- /content-->
+
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'datatable/js/jquery.dataTables.js' %}"></script>
+<script src="{% static 'datatable/js/dataTables.bootstrap4.js' %}"></script>
+
+
+<!--datatable JS-->
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+<script>
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
+</script>
+<!-- /datatable JS-->
+
+
+{% block script %}{% endblock %}
+
+</body>
+</html>
