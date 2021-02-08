@@ -3,11 +3,13 @@ from django import forms
 from django.contrib import messages
 from .models import Parent, Animal, TypeAnimal, Medecin, Rendezvous
 from .forms import Parent_form, Animal_form, TypeAnimal_form, Medecin_form, Rendezvous_form
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
 # vue pour enregistrer un parent
+@login_required()
 def parent(request):
     update = False
     parents = Parent.objects.all()
@@ -24,6 +26,7 @@ def parent(request):
 
 
 # vue pour modifier un parent
+@login_required()
 def updateparent(request):
     inst_parent = get_object_or_404(Parent, id=id)
     parents = Parent.objects.all()
@@ -39,6 +42,7 @@ def updateparent(request):
 
 
 # vue pour supprimer un parent
+@login_required()
 def deleteparent(request, id):
     parent_supprime = get_object_or_404(Parent, id=id)
     parent_supprime.delete()
@@ -46,12 +50,14 @@ def deleteparent(request, id):
 
 
 # vue pour afficher la liste des parents
+@login_required()
 def listparent(request):
     parents = Parent.objects.all()
     return render(request, 'animal/listparent.html', locals())
 
 
 # vue pour enregistrer un type animal
+@login_required()
 def typeanimal(request):
     update = False
     typeanimaux = TypeAnimal.objects.all()
@@ -68,6 +74,7 @@ def typeanimal(request):
 
 
 # vue pour modifier un type animal
+@login_required()
 def updatetypeanimal(request):
     inst_typeanimal = get_object_or_404(TypeAnimal, id=id)
     typesanimaux = TypeAnimal.objects.all()
@@ -83,6 +90,7 @@ def updatetypeanimal(request):
 
 
 # vue pour supprimer un type animal
+@login_required()
 def deletetypeanimal(request, id):
     typeanimal_supprime = get_object_or_404(TypeAnimal, id=id)
     typeanimal_supprime.delete()
@@ -90,12 +98,14 @@ def deletetypeanimal(request, id):
 
 
 # vue pour afficher la liste des types animaux
+@login_required()
 def listtypeanimal(request):
     typesanimaux = TypeAnimal.objects.all()
     return render(request, 'animal/listetypeanimal.html', locals())
 
 
 # vue pour enregistrer un animal
+@login_required()
 def animal(request):
     update = False
     animaux = Animal.objects.all()
@@ -114,6 +124,7 @@ def animal(request):
 
 
 # vue pour modifier un animal
+@login_required()
 def updateanimal(request):
     inst_animal = get_object_or_404(Animal, id=id)
     animaux = Animal.objects.all()
@@ -129,6 +140,7 @@ def updateanimal(request):
 
 
 # vue pour supprimer un animal
+@login_required()
 def deleteanimal(request, id):
     animal_supprime = get_object_or_404(Animal, id=id)
     animal_supprime.delete()
@@ -136,6 +148,7 @@ def deleteanimal(request, id):
 
 
 # vue pour afficher la liste des animaux
+@login_required()
 def listanimaux(request):
     animaux = Animal.objects.all()
     parents = Parent.objects.all()
@@ -143,6 +156,7 @@ def listanimaux(request):
 
 
 # vue pour enregistrer un medecin
+@login_required()
 def medecin(request):
     update = False
     medecins = Medecin.objects.all()
@@ -159,6 +173,7 @@ def medecin(request):
 
 
 # vue pour modifier un medecin
+@login_required()
 def updatemedecin(request):
     inst_medecin = get_object_or_404(Medecin, id=id)
     medecins = Medecin.objects.all()
@@ -174,6 +189,7 @@ def updatemedecin(request):
 
 
 # vue pour supprimer un medecin
+@login_required()
 def deletemedecin(request, id):
     medecin_supprime = get_object_or_404(Medecin, id=id)
     medecin_supprime.delete()
@@ -187,6 +203,7 @@ def listmedecin(request):
 
 
 # vue pour enregistrer un rendez-vous
+@login_required()
 def rendezvous(request):
     update = False
     rdvs = Rendezvous.objects.all()
@@ -205,6 +222,7 @@ def rendezvous(request):
 
 
 # vue pour modifier un rendez-vous
+@login_required()
 def updaterendezvous(request):
     inst_rendezvous = get_object_or_404(Rendezvous, id=id)
     rdvs = Rendezvous.objects.all()
@@ -220,6 +238,7 @@ def updaterendezvous(request):
 
 
 # vue pour supprimer un rendez-vous
+@login_required()
 def deleterendezvous(request, id):
     rendezvous_supprime = get_object_or_404(Rendezvous, id=id)
     rendezvous_supprime.delete()
@@ -227,6 +246,7 @@ def deleterendezvous(request, id):
 
 
 # vue pour afficher la liste des rendez-vous
+@login_required()
 def listrendezvous(request):
     rdvs = Rendezvous.objects.all()
     animaux = Animal.objects.all()

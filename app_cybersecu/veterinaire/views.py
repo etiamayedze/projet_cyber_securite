@@ -2,11 +2,6 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login as auth_user, logout
 
 
-
-def layout(request):
-    return render(request, '.html')
-
-
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
